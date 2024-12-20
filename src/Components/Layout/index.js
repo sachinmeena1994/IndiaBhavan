@@ -1,10 +1,14 @@
 import React from "react";
 import Header from "../Header";
+
 function Layout({ children }) {
   return (
     <>
-      <Header />
-      <main className="content">{children}</main>
+      <div className="bg-white min-h-screen">
+        {" "}
+        <Header />
+        <main className="content">{children}</main>
+      </div>
     </>
   );
 }
