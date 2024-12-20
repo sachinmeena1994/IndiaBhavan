@@ -24,7 +24,7 @@ const ImageSlider = ({ images }) => {
   }, [currentIndex]);
 
   return (
-    <div className="relative w-full h-screen overflow-hidden">
+    <div className="relative w-full h-[80vh] overflow-hidden">
       {/* Images */}
       <div
         className="flex transition-transform duration-500"

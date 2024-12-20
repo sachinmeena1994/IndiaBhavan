@@ -3,19 +3,65 @@ import ImageSlider from "../../Components/ImageSlider";
 import image1 from "../../Assests/Images/image1.jpg";
 import image2 from "../../Assests/Images/image2.jpg";
 import image3 from "../../Assests/Images/image3.jpg";
+
 const images = [image3, image1, image2];
 
 const Home = () => {
+  const welcomeText = "Welcome to India Bhavan";
+
   return (
     <>
       <ImageSlider images={images} />
-      <div className="p-6">
-        <h1 className="text-4xl font-bold text-center">
-          Welcome to the Home Page
+
+      {/* Centered Heading */}
+      <div className="flex justify-center items-center mt-8 mb-12">
+        <h1 className="text-6xl font-extrabold text-red-600">
+          {welcomeText.split("").map((char, index) => (
+            <span
+              key={index}
+              className="inline-block animate-single-color"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              {char === " " ? "\u00A0" : char}
+            </span>
+          ))}
         </h1>
-        <p className="text-lg mt-4 text-center">
-          Scroll down to see more content!
-        </p>
+      </div>
+
+      {/* Content Section */}
+      <div className="p-6 flex flex-col lg:flex-row items-center lg:items-start justify-between">
+        {/* Left Side: Welcome Message */}
+        <div className="lg:w-1/2 text-left lg:text-left p-4">
+          <div className="text-2xl font-bold leading-relaxed text-gray-800">
+            <p className="mb-6">
+              We are the perfect venue, be it business, family, or a special
+              occasion.
+            </p>
+            <p className="mb-6">
+              We offer an authentic Indian menu using a range of spices,
+              including turmeric, a key ingredient in many Indian and Southeast
+              Asian dishes. Try out our specialties - The Naan, famous Indian
+              flat breads, Masala Dosas, and Hyderabad Biryanis.
+            </p>
+            <p className="mb-6">
+              You can choose your menu from our large selection of Indian
+              specialties whether you're looking to dine-in or takeout.
+            </p>
+            <p className="mb-6">
+              We strive to make your every visit a true Indian dining
+              experience.
+            </p>
+          </div>
+        </div>
+
+        {/* Right Side: Image */}
+        <div className="lg:w-1/2 p-4">
+          <img
+            src={image1}
+            alt="India Bhavan"
+            className="w-full h-auto object-cover rounded-lg shadow-lg"
+          />
+        </div>
       </div>
     </>
   );

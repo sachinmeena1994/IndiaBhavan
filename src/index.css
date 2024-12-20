@@ -2,7 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-  
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -15,4 +15,20 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+@keyframes single-color {
+  0%, 100% {
+    color: black; /* Default or final color */
+    transform: scale(1); /* Default size */
+  }
+  50% {
+    color: red; /* The transition color */
+    transform: scale(1.25); /* Increased size */
+  }
+}
+
+.animate-single-color {
+  animation: single-color 1200ms infinite;
+  display: inline-block; /* Ensures transform applies correctly */
 }
