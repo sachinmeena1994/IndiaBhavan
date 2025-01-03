@@ -4,9 +4,9 @@ import { HashRouter } from "react-router-dom";
 
 import "./App.css";
 import Layout from "./Components/Layout";
-
+import { app } from "./Utilis/Firebase";
 const Home = lazy(() => import("./Pages/Home/index"));
-
+const Menu = lazy(() => import("./Pages/Menu/index"));
 function App() {
   return (
     <HashRouter>
@@ -14,6 +14,7 @@ function App() {
         {/* <Suspense fallback={<Loading />}> */}
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path="/menu" element={<Menu />} />
         </Routes>
         {/* </Suspense> */}
       </Layout>

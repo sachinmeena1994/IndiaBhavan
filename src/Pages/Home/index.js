@@ -1,5 +1,6 @@
 import React from "react";
 import ImageSlider from "../../Components/ImageSlider";
+import ServicesSection from "../../Components/Services";
 import image1 from "../../Assests/Images/image1.jpg";
 import image2 from "../../Assests/Images/image2.jpg";
 import image3 from "../../Assests/Images/image3.jpg";
@@ -11,11 +12,12 @@ const Home = () => {
 
   return (
     <>
+      {/* Image Slider */}
       <ImageSlider images={images} />
 
       {/* Centered Heading */}
-      <div className="flex justify-center items-center mt-8 mb-12">
-        <h1 className="text-6xl font-extrabold text-red-600">
+      <div className="flex justify-center items-center mt-10 mb-16 px-4">
+        <h1 className="text-6xl font-extrabold text-red-600 text-center">
           {welcomeText.split("").map((char, index) => (
             <span
               key={index}
@@ -29,10 +31,10 @@ const Home = () => {
       </div>
 
       {/* Content Section */}
-      <div className="p-6 flex flex-col lg:flex-row items-center lg:items-start justify-between">
+      <div className="p-6 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12">
         {/* Left Side: Welcome Message */}
         <div className="lg:w-1/2 text-left lg:text-left p-4">
-          <div className="text-2xl font-bold leading-relaxed text-gray-800">
+          <div className="text-2xl font-semibold leading-relaxed text-gray-800">
             <p className="mb-6">
               We are the perfect venue, be it business, family, or a special
               occasion.
@@ -55,13 +57,18 @@ const Home = () => {
         </div>
 
         {/* Right Side: Image */}
-        <div className="lg:w-1/2 p-4">
+        <div className="lg:w-1/2 p-4 flex justify-center">
           <img
             src={image1}
             alt="India Bhavan"
-            className="w-full h-auto object-cover rounded-lg shadow-lg"
+            className="max-w-full max-h-[500px] object-cover rounded-lg shadow-lg"
           />
         </div>
+      </div>
+
+      {/* Services Section */}
+      <div className="mt-16 mb-16">
+        <ServicesSection />
       </div>
     </>
   );

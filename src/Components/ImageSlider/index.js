@@ -24,7 +24,7 @@ const ImageSlider = ({ images }) => {
   }, [currentIndex]);
 
   return (
-    <div className="relative w-full h-[80vh] overflow-hidden">
+    <div className="relative w-full h-[80vh] mt-[14vh] md:h-auto overflow-hidden">
       {/* Images */}
       <div
         className="flex transition-transform duration-500"
@@ -35,9 +35,17 @@ const ImageSlider = ({ images }) => {
         {images.map((image, index) => (
           <div
             key={index}
-            className="min-w-full h-screen bg-center bg-cover"
-            style={{ backgroundImage: `url(${image})` }}
-          ></div>
+            className="min-w-full bg-gray-200 flex items-center justify-center"
+            style={{
+              height: "calc(80vh - 64px)", // Subtract height of the header if needed
+            }}
+          >
+            <img
+              src={image}
+              alt={`Slide ${index}`}
+              className="w-full h-full object-cover"
+            />
+          </div>
         ))}
       </div>
 

@@ -48,7 +48,7 @@ const Header = () => {
           <ul className="flex flex-col lg:flex-row items-center justify-center space-y-6 lg:space-y-0 lg:space-x-6 p-6 lg:p-0 w-full">
             {[
               { path: "/", label: "HOME" },
-              { path: "/main-menu", label: "MENU" },
+              { path: "/menu", label: "MENU" },
               { path: "/order-online", label: "ORDER ONLINE" },
               { path: "/catering", label: "CATERING" },
               { path: "/about", label: "ABOUT" },
@@ -60,7 +60,7 @@ const Header = () => {
               >
                 <button
                   onClick={() => navigate(item.path)}
-                  className="block w-full lg:w-auto px-4 py-2 text-xl font-extrabold text-red-600 lg:text-red-600 group-hover:text-white relative z-10 whitespace-nowrap"
+                  className="block w-full lg:w-auto px-4 py-2 text-md font-extrabold text-red-600 lg:text-red-600 group-hover:text-white relative z-10 whitespace-nowrap"
                 >
                   {item.label}
                 </button>
