@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const location = useLocation();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -56,11 +57,18 @@ const Header = () => {
             ].map((item, index) => (
               <li
                 key={index}
-                className="w-full lg:w-auto text-center flex justify-center group relative overflow-hidden transform transition-transform duration-300 hover:scale-125"
+                className={`w-full lg:w-auto text-center flex justify-center group relative overflow-hidden transform transition-transform duration-300 hover:scale-125 ${
+                  location.pathname === item.path ? "active" : ""
+                }`}
               >
                 <button
-                  onClick={() => navigate(item.path)}
-                  className="block w-full lg:w-auto px-4 py-2 text-md font-extrabold text-red-600 lg:text-red-600 group-hover:text-white relative z-10 whitespace-nowrap"
+                  onClick={() => {
+                    navigate(item.path);
+                    setIsMenuOpen(false); // Close the menu when an item is clicked
+                  }}
+                  className={`block w-full lg:w-auto px-4 py-2 text-md font-extrabold text-red-600 lg:text-red-600 group-hover:text-white relative z-10 whitespace-nowrap ${
+                    location.pathname === item.path ? "active" : ""
+                  }`}
                 >
                   {item.label}
                 </button>

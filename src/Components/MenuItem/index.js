@@ -1,25 +1,27 @@
 import React from "react";
 
-const MenuItem = ({ item }) => {
-  const { name, price, description, image } = item;
-
+const MenuItem = ({ item, onClick }) => {
   return (
-    <div className="bg-white shadow-lg rounded-lg p-4 flex flex-col items-center">
+    <div
+      onClick={() => onClick(item)}
+      className="border rounded-lg shadow-md cursor-pointer overflow-hidden hover:shadow-lg transition duration-300"
+    >
       {/* Image */}
-      {image && (
-        <img
-          src={image}
-          alt={name}
-          className="w-32 h-32 object-cover rounded-full mb-4"
-        />
-      )}
+      <img
+        src={item.images[0]} // Display the first image
+        alt={item.name}
+        className="w-full h-48 object-cover"
+      />
 
-      {/* Name and Price */}
-      <h2 className="text-xl font-bold text-red-600">{name}</h2>
-      <p className="text-gray-600 mb-2">{price}</p>
-
-      {/* Description */}
-      <p className="text-gray-700 text-center">{description}</p>
+      {/* Details */}
+      <div className="p-4">
+        <h3 className="font-bold text-lg">{item.name}</h3>
+        <p className="text-sm text-gray-600">{item.description}</p>
+        <div className="flex justify-between items-center mt-2">
+          <span className="text-green-600 font-bold">₹{item.price}</span>
+          <span className="text-sm text-gray-500">{item.category}</span>
+        </div>
+      </div>
     </div>
   );
 };
