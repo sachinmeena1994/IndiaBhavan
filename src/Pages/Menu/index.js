@@ -4,14 +4,15 @@ import { db } from "../../Utilis/Firebase";
 import CategoryTabs from "../../Components/CategoryTabs";
 import MenuItem from "../../Components/MenuItem";
 import MenuDetailsModal from "../../Components/MenuDetailsModal";
+import Skeleton from "../../Components/LoaderSkeleton";
 
 const Menu = () => {
   const [menuData, setMenuData] = useState([]);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [selectedItem, setSelectedItem] = useState(null); // Track selected item
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [isLoading, setIsLoading] = useState(true); // Loading state
 
-  // Fetch menu items from Firebase
   useEffect(() => {
     const fetchMenu = async () => {
       const querySnapshot = await getDocs(collection(db, "Menu"));
@@ -27,12 +28,13 @@ const Menu = () => {
         ...new Set(data.map((item) => item.category)),
       ];
       setCategories(uniqueCategories);
+
+      setIsLoading(false); // Set loading to false after data is fetched
     };
 
     fetchMenu();
   }, []);
 
-  // Filter menu items based on selected category
   const filteredMenu =
     selectedCategory === "All"
       ? menuData
@@ -40,22 +42,22 @@ const Menu = () => {
 
   return (
     <div className="p-6">
-      {/* Category Tabs */}
-      <div className="pt-20 p-6">
-        {/* Category Tabs */}
-        <CategoryTabs
-          categories={categories}
-          selectedCategory={selectedCategory}
-          onSelectCategory={setSelectedCategory}
-        />
-      </div>
+      <CategoryTabs
+        categories={categories}
+        selectedCategory={selectedCategory}
+        onSelectCategory={setSelectedCategory}
+      />
 
-      {/* Menu Items */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
-        {filteredMenu.map((item) => (
-          <MenuItem key={item.id} item={item} onClick={setSelectedItem} />
-        ))}
-      </div>
+      {/* Skeleton Loader */}
+      {isLoading ? (
+        <Skeleton width="100%" height="200px" count={6} />
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+          {filteredMenu.map((item) => (
+            <MenuItem key={item.id} item={item} onClick={setSelectedItem} />
+          ))}
+        </div>
+      )}
 
       {/* Modal for Additional Details */}
       {selectedItem && (

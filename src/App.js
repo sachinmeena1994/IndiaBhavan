@@ -7,6 +7,10 @@ import Layout from "./Components/Layout";
 import { app } from "./Utilis/Firebase";
 const Home = lazy(() => import("./Pages/Home/index"));
 const Menu = lazy(() => import("./Pages/Menu/index"));
+const Admin = lazy(() => import("./Pages/Admin/index"));
+const Catering = lazy(() => import("./Pages/Catering/index"));
+const About = lazy(() => import("./Pages/AboutUs/index"));
+const Contact = lazy(() => import("./Pages/ContactUs/index"));
 function App() {
   return (
     <HashRouter>
@@ -15,6 +19,10 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/menu" element={<Menu />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/catering" element={<Catering />} />
+          <Route path="/aboutus" element={<About />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
         {/* </Suspense> */}
       </Layout>

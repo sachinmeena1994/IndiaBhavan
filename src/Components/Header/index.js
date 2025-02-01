@@ -11,14 +11,18 @@ const Header = () => {
   };
 
   return (
-    <header className="bg-white text-black shadow-md fixed top-0 left-0 w-full z-50">
+    <header className="bg-white text-black shadow-md fixed top-0 left-0 w-full z-50 relative">
       <div className="container mx-auto px-6 py-6 flex items-center justify-between">
         {/* Brand Name */}
         <button
           onClick={() => navigate("/")}
-          className="text-3xl font-extrabold tracking-wide hover:text-gray-700 transition duration-300 whitespace-nowrap"
+          className="flex items-center justify-center hover:opacity-80 transition duration-300"
         >
-          INDIA BHAVAN
+          <img
+            src="/logo.png"
+            alt="India Bhavan Logo"
+            className="h-16 w-auto"
+          />
         </button>
 
         {/* Mobile Menu Button */}
@@ -50,9 +54,9 @@ const Header = () => {
             {[
               { path: "/", label: "HOME" },
               { path: "/menu", label: "MENU" },
-              { path: "/order-online", label: "ORDER ONLINE" },
+              // { path: "/order-online", label: "ORDER ONLINE" },
               { path: "/catering", label: "CATERING" },
-              { path: "/about", label: "ABOUT" },
+              { path: "/aboutus", label: "ABOUT" },
               { path: "/contact", label: "CONTACT" },
             ].map((item, index) => (
               <li
@@ -76,6 +80,7 @@ const Header = () => {
                 <span className="absolute inset-0 bg-black transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left z-0"></span>
               </li>
             ))}
+            <li></li>
           </ul>
         </nav>
       </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import { motion } from "framer-motion";
 import ImageSlider from "../../Components/ImageSlider";
 import ServicesSection from "../../Components/Services";
 import image1 from "../../Assests/Images/image1.jpg";
@@ -10,6 +11,26 @@ const images = [image3, image1, image2];
 const Home = () => {
   const welcomeText = "Welcome to India Bhavan";
 
+  // Animation Variants
+  const textVariants = {
+    hidden: { opacity: 0, y: 50 },
+    visible: (index) => ({
+      opacity: 1,
+      y: 0,
+      transition: { delay: index * 0.05, type: "spring", stiffness: 50 },
+    }),
+  };
+
+  const sectionVariants = {
+    hidden: { opacity: 0, x: -50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, x: 50 },
+    visible: { opacity: 1, x: 0, transition: { duration: 0.6 } },
+  };
+
   return (
     <>
       {/* Image Slider */}
@@ -19,13 +40,16 @@ const Home = () => {
       <div className="flex justify-center items-center mt-10 mb-16 px-4">
         <h1 className="text-6xl font-extrabold text-red-600 text-center">
           {welcomeText.split("").map((char, index) => (
-            <span
+            <motion.span
               key={index}
-              className="inline-block animate-single-color"
-              style={{ animationDelay: `${index * 100}ms` }}
+              className="inline-block"
+              variants={textVariants}
+              initial="hidden"
+              animate="visible"
+              custom={index}
             >
               {char === " " ? "\u00A0" : char}
-            </span>
+            </motion.span>
           ))}
         </h1>
       </div>
@@ -33,7 +57,12 @@ const Home = () => {
       {/* Content Section */}
       <div className="p-6 flex flex-col lg:flex-row items-center lg:items-start justify-between gap-12">
         {/* Left Side: Welcome Message */}
-        <div className="lg:w-1/2 text-left lg:text-left p-4">
+        <motion.div
+          className="lg:w-1/2 text-left lg:text-left p-4"
+          variants={sectionVariants}
+          initial="hidden"
+          animate="visible"
+        >
           <div className="text-2xl font-semibold leading-relaxed text-gray-800">
             <p className="mb-6">
               We are the perfect venue, be it business, family, or a special
@@ -54,22 +83,32 @@ const Home = () => {
               experience.
             </p>
           </div>
-        </div>
+        </motion.div>
 
         {/* Right Side: Image */}
-        <div className="lg:w-1/2 p-4 flex justify-center">
+        <motion.div
+          className="lg:w-1/2 p-4 flex justify-center"
+          variants={imageVariants}
+          initial="hidden"
+          animate="visible"
+        >
           <img
             src={image1}
             alt="India Bhavan"
             className="max-w-full max-h-[500px] object-cover rounded-lg shadow-lg"
           />
-        </div>
+        </motion.div>
       </div>
 
       {/* Services Section */}
-      <div className="mt-16 mb-16">
+      <motion.div
+        className="mt-16 mb-16"
+        variants={sectionVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <ServicesSection />
-      </div>
+      </motion.div>
     </>
   );
 };
