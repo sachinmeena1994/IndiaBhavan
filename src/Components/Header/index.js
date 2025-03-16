@@ -58,6 +58,7 @@ const Header = () => {
               { path: "/catering", label: "CATERING" },
               { path: "/aboutus", label: "ABOUT" },
               { path: "/contact", label: "CONTACT" },
+              { path: "/admin", label: "Admin" },
             ].map((item, index) => (
               <li
                 key={index}

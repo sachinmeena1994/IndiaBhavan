@@ -4,8 +4,8 @@ const Footer = () => {
   const currentYear = new Date().getFullYear(); // Get the current year dynamically
 
   return (
-    <footer className="bg-gray-800 text-white py-8">
-      <div className="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
+    <footer className="bg-gray-800 text-white py-8 px-6 md:px-12">
+      <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left">
         {/* Hours Section */}
         <div className="space-y-2">
           <h3 className="text-xl font-bold text-yellow-400">Hours:</h3>
@@ -37,16 +37,25 @@ const Footer = () => {
         </div>
 
         {/* Credits Section */}
-        <div className="space-y-2 text-center md:text-right">
+        <div className="space-y-2">
           <p>© {currentYear} India Bhavan. All rights reserved.</p>
-          <div className="flex justify-center md:justify-end space-x-4">
-            <a href="privacy.html" className="text-gray-400 hover:underline">
+          <div className="flex justify-center md:justify-end space-x-6">
+            <a
+              href="privacy.html"
+              className="text-gray-400 hover:text-white transition duration-200"
+            >
               Privacy Policy
             </a>
-            <a href="terms.html" className="text-gray-400 hover:underline">
+            <a
+              href="terms.html"
+              className="text-gray-400 hover:text-white transition duration-200"
+            >
               Terms of Use
             </a>
-            <a href="sitemap.html" className="text-gray-400 hover:underline">
+            <a
+              href="sitemap.html"
+              className="text-gray-400 hover:text-white transition duration-200"
+            >
               Sitemap
             </a>
           </div>
